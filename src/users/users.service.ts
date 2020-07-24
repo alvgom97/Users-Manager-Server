@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { User } from './users.interface';
-import { CreateUserDto } from './create-user-dto';
+import { CreateUserDto, Insurance } from './create-user-dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { UpdateUserDto } from "./update-user-dto";
 
 @Injectable()
 export class UsersService {
@@ -16,6 +17,7 @@ export class UsersService {
 
     async getUser(userId: string): Promise<User>{
         const user = await this.userModel.findById(userId)
+        await user.populate('insuranceList').execPopulate();
         return user;
     }
 
@@ -31,9 +33,9 @@ export class UsersService {
         return deletedUser;
     }
 
-    async updateUser(userId: string, createUserDto: CreateUserDto): Promise<User> {
+    async updateUser(userId: string, updateUserDto: UpdateUserDto): Promise<User> {
 
-        const updatedUser = await this.userModel.findByIdAndUpdate(createUserDto, { new: true});
+        const updatedUser = await this.userModel.findByIdAndUpdate({ _id: userId}, updateUserDto);
         return updatedUser;
     }
 }

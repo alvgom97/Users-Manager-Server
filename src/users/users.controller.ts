@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Res, HttpStatus, Param, NotFoundException, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Res, HttpStatus, Param, NotFoundException, Delete, Put, Logger } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './users.interface';
 import { CreateUserDto } from './create-user-dto';
@@ -13,7 +13,7 @@ export class UsersController {
         @Res() res): Promise<User[]> {
 
         const users = await this.usersService.getUsers();
-        res.header('Access-Control-Allow-Origin', "*");
+        //res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json(users);
     }
 
@@ -24,7 +24,7 @@ export class UsersController {
 
         const user = await this.usersService.getUser(userId);
         if (!user) throw new NotFoundException("User not found");
-        res.header('Access-Control-Allow-Origin', "*");
+        //res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json(user);
     }
 
@@ -33,8 +33,10 @@ export class UsersController {
     async createUser(
         @Res() res,
         @Body() createUserDto: CreateUserDto): Promise<User> {
+
+            Logger.log(createUserDto);
         const user = await this.usersService.createUser(createUserDto);
-        res.header('Access-Control-Allow-Origin', "*");
+        //res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json({
             message: 'User Created',
             user
@@ -47,7 +49,6 @@ export class UsersController {
         @Param('userId') userId: string): Promise<User> {
         const user = await this.usersService.deleteUser(userId);
         if (!user) throw new NotFoundException("User not found");
-        res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json({
             message: 'User Deleted',
             user
@@ -59,9 +60,11 @@ export class UsersController {
         @Res() res, 
         @Body() createUserDto: CreateUserDto, 
         @Param('userId') userId): Promise<User> {
+
+        
         const user = await this.usersService.updateUser(userId, createUserDto);
         if (!user) throw new NotFoundException('User not found');
-        res.header('Access-Control-Allow-Origin', "*");
+        //res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json({
             message: 'User Updated',
             user

@@ -17,12 +17,7 @@ export const UserSchema = new Schema({
         city: String
     },
     professionalType: Schema.Types.Mixed,
-    insuranceList: [
-        {cardNumber: String,
-        name: String,
-        type: Schema.Types.Mixed
-        }
-    ]
+    insuranceList: [{type: Schema.Types.ObjectId, ref: "Insurance"}]
 });
 
 

@@ -1,5 +1,4 @@
-export class CreateUserDto {
-    _id: string;
+export class UpdateUserDto {
     nhc?: string;
     medicalBoardNumber?: string;
     firstName: string;
@@ -10,7 +9,6 @@ export class CreateUserDto {
     identityNumber?: string;
     address: Address;
     professionalType?: professional;
-    insuranceList?: Insurance[];
 }
 
 type professional = 'Médico'
