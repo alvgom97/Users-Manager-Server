@@ -4,6 +4,7 @@ import { UserSchema } from './user.schema';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { InsurancesModule } from 'src/insurances/insurances.module';
+import { CreateUserDto } from './create-user-dto';
 
 @Module({
     imports: [

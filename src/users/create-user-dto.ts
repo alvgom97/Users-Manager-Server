@@ -1,5 +1,5 @@
 export class CreateUserDto {
-    _id: string;
+    //_id: string;
     nhc?: string;
     medicalBoardNumber?: string;
     firstName: string;
@@ -9,7 +9,7 @@ export class CreateUserDto {
     birthdate?: string;
     identityNumber?: string;
     address: Address;
-    professionalType?: professional;
+    professionalType?: string;
     insuranceList?: Insurance[];
 }
 
@@ -33,5 +33,5 @@ type insurance = 'Salud'
 export class Insurance {
     cardNumber?: string;
     name?: string;
-    type?: insurance;
+    type?: string; 
 }

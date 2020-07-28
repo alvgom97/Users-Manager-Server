@@ -1,7 +1,7 @@
 export class CreateInsuranceDto {
     cardNumber?: string;
     name?: string;
-    type?: insurance;
+    type?: string;
 }
 
 type insurance = 'Salud'

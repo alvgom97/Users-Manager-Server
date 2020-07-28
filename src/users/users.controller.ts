@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Res, HttpStatus, Param, NotFoundException,
 import { UsersService } from './users.service';
 import { User } from './users.interface';
 import { CreateUserDto } from './create-user-dto';
+import { UpdateUserDto } from './update-user-dto';
 
 @Controller('users')
 export class UsersController {
@@ -58,11 +59,11 @@ export class UsersController {
     @Put('/:userId')
     async updateUser(
         @Res() res, 
-        @Body() createUserDto: CreateUserDto, 
+        @Body() updateUserDto: UpdateUserDto, 
         @Param('userId') userId): Promise<User> {
 
         
-        const user = await this.usersService.updateUser(userId, createUserDto);
+        const user = await this.usersService.updateUser(userId, updateUserDto);
         if (!user) throw new NotFoundException('User not found');
         //res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json({
