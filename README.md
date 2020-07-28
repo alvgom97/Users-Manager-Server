@@ -1,12 +1,12 @@
-ipdate## Requirements
+## Requirements
 
-- install [nodejs](https://nodejs.org/es/download) (you may need to restart afterwards)
+- Install [nodejs](https://nodejs.org/es/download) (You may need to restart afterwards)
 
-- install migrate-mongoose
+- Install migrate-mongoose
 ```
 npm i -g migrate-mongoose
 ```
-
+- [User Management Client](https://github.com/alvgom97/Users-Manager-Client)
 
 ## Initialize
 
@@ -14,11 +14,15 @@ npm i -g migrate-mongoose
 ```
 MIGRATE_dbConnectionUri = mongodb+srv://admin:admin69@mycluster.qylyg.gcp.mongodb.net/UsersManager?retryWrites=true&w=majority
 ```
-- Initialize the test data 
+- Install the project
+```
+npm i 
+```
+- Initialize the test data (Skip this step if you used the connection above)
 ```
 migrate up init
 ```
-- install the project
+- Start project
 ```
-npm i 
+npm start 
 ```
