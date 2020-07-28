@@ -6,7 +6,7 @@ import { ConfigModule } from "@nestjs/config";
 
 @Module({
   imports: [ConfigModule.forRoot(), UsersModule, InsurancesModule,
-    MongooseModule.forRoot(`mongodb+srv://${process.env.USER}:${process.env.PASS}@${process.env.HOST}?retryWrites=true&w=majority`)
+    MongooseModule.forRoot(`${process.env.MIGRATE_dbConnectionUri}`)
   ],
 })
 export class AppModule {}
