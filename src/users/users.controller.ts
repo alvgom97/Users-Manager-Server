@@ -34,8 +34,6 @@ export class UsersController {
     async createUser(
         @Res() res,
         @Body() createUserDto: CreateUserDto): Promise<User> {
-
-            Logger.log(createUserDto);
         const user = await this.usersService.createUser(createUserDto);
         //res.header('Access-Control-Allow-Origin', "*");
         return res.status(HttpStatus.OK).json({
