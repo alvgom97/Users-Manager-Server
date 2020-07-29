@@ -2,13 +2,16 @@ import { Controller, Get, Res, HttpStatus, Post, Body } from '@nestjs/common';
 import { InsurancesService } from './insurances.service';
 import { Insurance } from './insurances.interface';
 import { CreateInsuranceDto } from './create-insurance-dto';
+import { ApiTags, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('Insurances')
 @Controller('insurances')
 export class InsurancesController {
 
     constructor(private insuranceService: InsurancesService) { }
 
     @Get()
+    @ApiResponse({ status: 200, description: 'All insurances successfully obtained.'})
     async getInsurances(
         @Res() res): Promise<Insurance[]> {
 
@@ -17,7 +20,9 @@ export class InsurancesController {
         return res.status(HttpStatus.OK).json(users);
     }
 
+    
     @Post()
+    @ApiResponse({ status: 201, description: 'The insurance has been successfully created.'})
     async createInsurance(
         @Res() res,
         @Body() createInsuranceDto: CreateInsuranceDto): Promise<Insurance> {
