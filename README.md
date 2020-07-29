@@ -28,3 +28,7 @@ migrate up init
 ```
 npm i 
 ```
+
+## Documentation :book:
+
+- Check the API [here](http://localhost:3000/api)
