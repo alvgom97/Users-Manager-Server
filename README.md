@@ -6,9 +6,17 @@
 ```
 npm i -g migrate-mongoose
 ```
+- [Users Manager Server](https://github.com/alvgom97/Users-Manager-Server)
 
+## Documentation :book:
+
+- Check the API [here](https://users-manager.herokuapp.com/api/)
 
 ## Deployment 🚀
+
+#### It is currently deployed in Heroku [here](https://users-manager.herokuapp.com/)
+
+#### For deploying it locally:
 
 - Set the database connection URI in the .env file
 ```
@@ -29,6 +37,4 @@ migrate up init
 npm i 
 ```
 
-## Documentation :book:
 
-- Check the API [here](http://localhost:3000/api)
